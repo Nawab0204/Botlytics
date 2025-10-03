@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Botlytics - Empowering Businesses with Digital Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a1a; /* Deep blue/black */
+            color: #e0e0e0;
+        }
+
+        /* Gradient text effect */
+        .gradient-text {
+            background: linear-gradient(90deg, #33f7ff, #7a33ff, #ff33a1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        
+        /* Glowing effect for buttons and accents */
+        .glow-effect {
+            box-shadow: 0 0 5px #33f7ff, 0 0 10px #33f7ff, 0 0 15px #7a33ff;
+        }
+
+        .glow-effect-subtle {
+            box-shadow: 0 0 8px rgba(51, 247, 255, 0.3), 0 0 12px rgba(122, 51, 255, 0.2);
+        }
+
+        /* Service card hover effect */
+        .service-card {
+            background-color: rgba(23, 23, 40, 0.6);
+            border: 1px solid rgba(122, 51, 255, 0.3);
+            transition: all 0.3s ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #33f7ff;
+            box-shadow: 0 10px 30px rgba(51, 247, 255, 0.1);
+        }
+        
+        /* Section fade-in animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation active state */
+        .nav-link.active {
+            color: #33f7ff;
+            border-bottom: 2px solid #33f7ff;
+        }
+        
+        /* For hiding/showing sections */
+        .page-section {
+            display: none;
+        }
+        .page-section.active {
+            display: block;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(#7a33ff, #33f7ff);
+            border-radius: 4px;
+        }
+
+        /* Chatbot styling */
+        .chatbot-window {
+            height: 70vh;
+            max-height: 500px;
+        }
+
+        /* Testimonial slider */
+        .testimonial-slide {
+            display: none;
+        }
+        .testimonial-slide.active {
+            display: block;
+        }
+        
+        /* Blog post styles */
+        .blog-content h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 700; /* font-bold */
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+            color: #33f7ff;
+        }
+         .blog-content h3 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+            color: #7a33ff;
+        }
+        .blog-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            color: #d1d5db; /* gray-300 */
+        }
+         .blog-content ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #d1d5db;
+        }
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+        .blog-content a {
+            color: #33f7ff;
+            text-decoration: underline;
+        }
+        
+        /* Animation for blobs */
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header & Navigation -->
+    <header class="bg-black/30 backdrop-blur-lg sticky top-0 z-50 border-b border-violet-500/20">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-3xl font-bold gradient-text nav-trigger">Botlytics</a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#home" class="nav-link nav-trigger hover:text-cyan-400 transition-colors active">Home</a>
+                <a href="#about" class="nav-link nav-trigger hover:text-cyan-400 transition-colors">About</a>
+                <a href="#services" class="nav-link nav-trigger hover:text-cyan-400 transition-colors">Services</a>
+                <a href="#portfolio" class="nav-link nav-trigger hover:text-cyan-400 transition-colors">Portfolio</a>
+                <a href="#blog" class="nav-link nav-trigger hover:text-cyan-400 transition-colors">Blog</a>
+                <a href="#contact" class="nav-link nav-trigger hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="hidden md:block bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-bold py-2 px-6 rounded-lg hover:opacity-90 transition-opacity glow-effect-subtle nav-trigger">
+                Free Consultation
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#home" class="block nav-link nav-trigger hover:text-cyan-400 transition-colors active">Home</a>
+            <a href="#about" class="block nav-link nav-trigger hover:text-cyan-400 transition-colors">About Us</a>
+            <a href="#services" class="block nav-link nav-trigger hover:text-cyan-400 transition-colors">Services</a>
+            <a href="#portfolio" class="block nav-link nav-trigger hover:text-cyan-400 transition-colors">Portfolio</a>
+            <a href="#blog" class="block nav-link nav-trigger hover:text-cyan-400 transition-colors">Blog</a>
+            <a href="#contact" class="block nav-link nav-trigger hover:text-cyan-400 transition-colors">Contact</a>
+            <a href="#contact" class="block bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-bold py-2 px-6 rounded-lg mt-4 text-center nav-trigger">
+                Free Consultation
+            </a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Homepage Section -->
+        <section id="home" class="page-section active">
+            <!-- Hero -->
+            <div class="relative min-h-screen flex items-center justify-center text-center overflow-hidden px-4">
+                <div class="absolute inset-0 bg-black/50 z-10"></div>
+                <div class="absolute inset-0 z-0">
+                    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob"></div>
+                    <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-violet-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+                    <div class="absolute bottom-1/4 left-1/2 w-96 h-96 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+                </div>
+
+                <div class="relative z-20 container mx-auto fade-in-section is-visible">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+                        <span class="gradient-text">Empowering Businesses</span><br> with Digital Intelligence
+                    </h1>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto text-gray-300 mb-8">
+                        We fuse innovative technology with strategic marketing to unlock your brand's true potential. From web development to AI automation, we build your future, today.
+                    </p>
+                    <a href="#contact" class="bg-gradient-to-r from-cyan-400 to-violet-600 text-white font-bold py-4 px-10 rounded-lg text-lg hover:opacity-90 transition-opacity glow-effect nav-trigger">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+
+            <!-- Client Logos -->
+            <div class="py-16 bg-black/20">
+                <div class="container mx-auto px-6 text-center">
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">Trusted by industry leaders</h3>
+                    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+                        <img src="https://placehold.co/120x40/0a0a1a/e0e0e0?text=TechCorp" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://placehold.co/120x40/0a0a1a/e0e0e0?text=InnovateIO" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://placehold.co/120x40/0a0a1a/e0e0e0?text=QuantumLeap" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://placehold.co/120x40/0a0a1a/e0e0e0?text=FutureSys" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="https://placehold.co/120x40/0a0a1a/e0e0e0?text=DataDriven" alt="Client Logo" class="h-8 opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Services on Homepage -->
+            <div class="py-20 container mx-auto px-6">
+                <div class="text-center mb-16 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-2">Our Core Services</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">We offer a complete suite of digital solutions designed to integrate seamlessly and accelerate your growth from every angle.</p>
+                </div>
+                
+                <div class="space-y-24">
+                    <!-- Detailed Service 1: Web Dev -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                        <div>
+                           <div class="mb-4 inline-block p-4 bg-cyan-500/10 rounded-full border border-cyan-500/20">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#33f7ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-4">Custom Web Development</h3>
+                            <p class="text-gray-300 mb-6">Your website is your digital storefront. We don't just build websites; we engineer immersive digital experiences. Our development process focuses on creating lightning-fast, visually captivating, and intuitively functional platforms that not only attract visitors but convert them into loyal customers. We blend cutting-edge technology with user-centric design to ensure your site is a powerful engine for business growth.</p>
+                            <ul class="space-y-3 text-gray-400">
+                                <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> <strong>Bespoke Solutions:</strong> From corporate sites to complex e-commerce platforms, built from the ground up to meet your unique needs.</li>
+                                <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> <strong>Performance-Obsessed:</strong> Optimized for speed and reliability, ensuring a flawless user experience that boosts SEO rankings.</li>
+                                <li class="flex items-center"><span class="text-cyan-400 mr-3">&#10003;</span> <strong>Future-Proof Technology:</strong> Utilizing modern frameworks like React, Next.js, and headless CMS for scalability and flexibility.</li>
+                            </ul>
+                        </div>
+                        <div class="service-card rounded-xl p-4">
+                             <a href="#services" class="nav-trigger block rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20">
+                                <img src="https://placehold.co/600x400/0a0a1a/33f7ff?text=Modern+Web+Design" alt="Web Development" class="rounded-lg">
+                             </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Detailed Service 2: AI Automation -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                        <div class="service-card rounded-xl p-4 md:order-2">
+                             <a href="#services" class="nav-trigger block rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-violet-500/20">
+                                <img src="https://placehold.co/600x400/0a0a1a/7a33ff?text=AI+Powered+Insights" alt="AI Automation" class="rounded-lg">
+                             </a>
+                        </div>
+                        <div class="md:order-1">
+                           <div class="mb-4 inline-block p-4 bg-violet-500/10 rounded-full border border-violet-500/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7a33ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="12" width="8" height="8" rx="2"/><path d="M8 12v-2a2 2 0 1 1 4 0v2"/></svg>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-4">Intelligent AI Automation</h3>
+                            <p class="text-gray-300 mb-6">Stop wasting time on repetitive tasks and unlock your team's true potential. We implement sophisticated AI and automation solutions that streamline your business processes, from customer support to data analysis. Our custom-built AI chatbots, automated workflows, and predictive analytics tools work 24/7 to improve efficiency, reduce costs, and provide you with the data-driven insights needed to make smarter decisions.</p>
+                             <ul class="space-y-3 text-gray-400">
+                                <li class="flex items-center"><span class="text-violet-400 mr-3">&#10003;</span> <strong>AI Chatbots:</strong> Provide instant, 24/7 customer support and generate leads without human intervention.</li>
+                                <li class="flex items-center"><span class="text-violet-400 mr-3">&#10003;</span> <strong>Workflow Automation:</strong> Connect your apps and automate tasks to eliminate manual data entry and reduce errors.</li>
+                                <li class="flex items-center"><span class="text-violet-400 mr-3">&#10003;</span> <strong>Predictive Analytics:</strong> Leverage your data to forecast trends, understand customer behavior, and stay ahead of the competition.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                     <!-- Detailed Service 3: SEO & Digital Marketing -->
+                    <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                        <div>
+                           <div class="mb-4 inline-block p-4 bg-pink-500/10 rounded-full border border-pink-500/20">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#ff33a1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+                            </div>
+                            <h3 class="text-3xl font-bold mb-4">SEO & Digital Marketing</h3>
+                            <p class="text-gray-300 mb-6">Having a great website is only half the battle. Getting seen by the right audience is what truly matters. Our holistic digital marketing strategies are designed to elevate your brand's visibility and drive targeted traffic. We combine technical SEO, compelling content marketing, strategic paid advertising, and insightful analytics to create a powerful marketing ecosystem that delivers a measurable return on investment.</p>
+                            <ul class="space-y-3 text-gray-400">
+                                <li class="flex items-center"><span class="text-pink-400 mr-3">&#10003;</span> <strong>Comprehensive SEO:</strong> Technical audits, on-page optimization, quality link building, and local SEO to dominate search rankings.</li>
+                                <li class="flex items-center"><span class="text-pink-400 mr-3">&#10003;</span> <strong>Paid Advertising (PPC):</strong> Expert management of Google Ads and social media ad campaigns for immediate, targeted results.</li>
+                                <li class="flex items-center"><span class="text-pink-400 mr-3">&#10003;</span> <strong>Content Strategy:</strong> Creating valuable, SEO-optimized content that establishes you as an industry authority and attracts organic traffic.</li>
+                            </ul>
+                        </div>
+                        <div class="service-card rounded-xl p-4">
+                            <a href="#services" class="nav-trigger block rounded-lg overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-pink-500/20">
+                               <img src="https://placehold.co/600x400/0a0a1a/ff33a1?text=Marketing+Growth" alt="SEO & Marketing" class="rounded-lg">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="py-20 bg-black/20">
+                <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4 fade-in-section">What Our Clients Say</h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12 fade-in-section">We build relationships, not just projects.</p>
+                    
+                    <div class="relative max-w-3xl mx-auto fade-in-section">
+                        <div id="testimonial-slider" class="relative">
+                            <!-- Testimonial 1 -->
+                            <div class="testimonial-slide active">
+                                <p class="text-2xl italic text-white mb-6">"Botlytics transformed our online presence. Their AI automation saved us 20 hours a week, and their SEO strategy doubled our traffic in three months. Absolutely game-changing."</p>
+                                <div class="font-bold text-lg gradient-text">Muhammad Ali Husnain Nawab</div>
+                                <div class="text-gray-400">CEO, Nexus Innovations</div>
+                            </div>
+                            <!-- Testimonial 2 -->
+                            <div class="testimonial-slide">
+                                <p class="text-2xl italic text-white mb-6">"The team at Botlytics is incredibly professional and innovative. The website they built for us is not only beautiful but also incredibly fast and functional. Highly recommended!"</p>
+                                <div class="font-bold text-lg gradient-text">John Smith</div>
+                                <div class="text-gray-400">Founder, InnovateIO</div>
+                            </div>
+                            <!-- Testimonial 3 -->
+                            <div class="testimonial-slide">
+                                <p class="text-2xl italic text-white mb-6">"Their social media management took our brand from obscurity to a recognized name in our niche. The engagement rates are through the roof. A fantastic partner to have."</p>
+                                <div class="font-bold text-lg gradient-text">Emily White</div>
+                                <div class="text-gray-400">Marketing Director, FutureSys</div>
+                            </div>
+                        </div>
+                        <button id="prev-testimonial" class="absolute top-1/2 -translate-y-1/2 left-0 -translate-x-12 text-cyan-400 hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                        </button>
+                        <button id="next-testimonial" class="absolute top-1/2 -translate-y-1/2 right-0 translate-x-12 text-cyan-400 hover:text-white transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="page-section py-20 container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-section">
+                <h1 class="text-4xl md:text-6xl font-black mb-2"><span class="gradient-text">About Botlytics</span></h1>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">We are the architects of the new digital frontier, building intelligent solutions for ambitious businesses.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="fade-in-section">
+                    <h2 class="text-3xl font-bold mb-4">Our Story: From Vision to Reality</h2>
+                    <p class="text-gray-300 mb-4 leading-relaxed">Botlytics was founded on a rebellious yet simple premise: that the transformative power of cutting-edge technology should not be a privilege reserved for corporate giants. We observed a vast digital divide, where small and medium-sized businesses were left navigating a complex, fast-changing landscape with outdated tools. We knew we could change that.</p>
+                    <p class="text-gray-300 leading-relaxed">Driven by a passion for innovation and a deep-seated belief in the power of the entrepreneur, we set out to build a new kind of digital agency. One that doesn't just provide services, but forges partnerships. One that doesn't just follow trends, but defines them. We are a collective of developers, data scientists, marketers, and creative thinkers, united by a single mission: to provide seamless, intelligent, and powerful digital solutions that deliver not just results, but a real competitive advantage.</p>
+                </div>
+                <div class="fade-in-section">
+                    <img src="https://placehold.co/600x400/0a0a1a/7a33ff?text=Innovation+Hub" alt="Our Office" class="rounded-xl shadow-2xl glow-effect-subtle">
+                </div>
+            </div>
+            
+            <div class="text-center mb-20 fade-in-section">
+                 <h2 class="text-4xl font-bold mb-12">The Mind Behind The Mission</h2>
+                <div class="max-w-4xl mx-auto service-card rounded-2xl p-8 grid md:grid-cols-3 gap-8 items-center">
+                    <div class="md:col-span-1">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQEBi-0a9VeQnA/profile-displayphoto-scale_400_400/B4EZmrFqSFHcAg-/0/1759512014467?e=1762387200&v=beta&t=zxGLj5w5H3oLKe4EAoBYeh_4lOY521eklO5K6ZbRD9c" alt="Muhammad Ali Husnain Nawab" class="w-48 h-48 rounded-full mx-auto border-4 border-cyan-500/50 shadow-lg object-cover">
+                    </div>
+                    <div class="md:col-span-2 text-left">
+                        <h3 class="text-3xl font-bold">Muhammad Ali Husnain Nawab</h3>
+                        <p class="text-cyan-400 text-lg mb-4">Founder & CEO</p>
+                        <p class="text-gray-300">"I founded Botlytics to be a catalyst for growth. My vision is to democratize digital excellence, equipping every business with the intelligent tools they need to not just compete, but to dominate their market. We are more than a service provider; we are your dedicated partner in innovation and success."</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="grid md:grid-cols-3 gap-8 text-center mb-20">
+                <div class="service-card rounded-xl p-8 fade-in-section">
+                    <h3 class="text-2xl font-bold mb-2 gradient-text">Our Mission</h3>
+                    <p class="text-gray-400">To empower businesses with innovative, data-driven digital solutions, making advanced technology accessible, understandable, and profoundly profitable for everyone, from startups to established enterprises.</p>
+                </div>
+                <div class="service-card rounded-xl p-8 fade-in-section">
+                    <h3 class="text-2xl font-bold mb-2 gradient-text">Our Vision</h3>
+                    <p class="text-gray-400">To be the undisputed leader and most trusted partner in digital transformation, creating a future where technology and human ingenuity converge to unlock limitless potential for businesses worldwide.</p>
+                </div>
+                <div class="service-card rounded-xl p-8 fade-in-section">
+                    <h3 class="text-2xl font-bold mb-2 gradient-text">Our Values</h3>
+                    <p class="text-gray-400">Radical Innovation, Unwavering Integrity, Deep Collaboration, and an Obsessive Commitment to Client Success. These pillars guide every decision we make.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="page-section py-20 container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-section">
+                <h1 class="text-4xl md:text-6xl font-black mb-2"><span class="gradient-text">Our Services</span></h1>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">A comprehensive suite of solutions tailored for excellence. We don't just offer services; we deliver integrated strategies for digital dominance.</p>
+            </div>
+            
+            <div class="space-y-16">
+                <!-- Service Detail -->
+                <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">Website Development</h2>
+                        <p class="text-gray-300 mb-6">We build more than websites; we build digital experiences. Our focus is on creating responsive, visually stunning, and user-centric sites that drive engagement and conversions.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">&#10003;</span> <strong>UI/UX Design & Prototyping:</strong> Crafting intuitive interfaces that provide a seamless user journey.</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">&#10003;</span> <strong>Responsive & Mobile-First Design:</strong> Ensuring a flawless experience on any device, from desktops to smartphones.</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">&#10003;</span> <strong>E-commerce & Payment Solutions:</strong> Building robust online stores with secure and easy-to-use payment gateways.</li>
+                            <li class="flex items-start"><span class="text-cyan-400 mr-3 mt-1">&#10003;</span> <strong>Advanced CMS Integration:</strong> Expertise in WordPress, Shopify, and modern Headless CMS for ultimate content control.</li>
+                        </ul>
+                    </div>
+                     <div class="service-card rounded-xl p-8">
+                        <h3 class="font-bold mb-2 text-lg">Our Process Flow:</h3>
+                        <p class="text-gray-400">1. <strong>Discovery:</strong> Deep dive into your goals and audience.<br>2. <strong>Strategy & Design:</strong> Wireframing and creating a stunning visual identity.<br>3. <strong>Development:</strong> Clean, efficient code and robust functionality.<br>4. <strong>Testing & QA:</strong> Rigorous testing for a bug-free launch.<br>5. <strong>Launch & Deployment:</strong> Seamless go-live process.<br>6. <strong>Ongoing Support:</strong> Maintenance and continuous improvement.</p>
+                        <a href="#contact" class="inline-block mt-6 bg-cyan-500 text-white font-bold py-2 px-6 rounded-lg nav-trigger">Get a Quote</a>
+                    </div>
+                </div>
+
+                <!-- Service Detail -->
+                <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                     <div class="service-card rounded-xl p-8 md:order-2">
+                        <h3 class="font-bold mb-2 text-lg">Key Hosting Features:</h3>
+                        <ul class="space-y-3 text-gray-400">
+                           <li><strong class="text-white">99.9% Uptime Guarantee:</strong> Unmatched reliability for your digital assets.</li>
+                           <li><strong class="text-white">Advanced DDoS Protection:</strong> Proactive defense against malicious attacks.</li>
+                           <li><strong class="text-white">Automated Daily Backups:</strong> Your data is always safe and restorable.</li>
+                           <li><strong class="text-white">Global CDN & Caching:</strong> Lightning-fast load times for users worldwide.</li>
+                        </ul>
+                        <a href="#contact" class="inline-block mt-6 bg-violet-500 text-white font-bold py-2 px-6 rounded-lg nav-trigger">Explore Plans</a>
+                    </div>
+                    <div class="md:order-1">
+                        <h2 class="text-3xl font-bold mb-4">Secure & Scalable Hosting</h2>
+                        <p class="text-gray-300 mb-6">Your website's performance and security are non-negotiable. Our managed hosting solutions provide a robust, scalable, and secure environment on leading cloud platforms, so you can focus on your business with absolute peace of mind.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-violet-400 mr-3 mt-1">&#10003;</span> <strong>Managed Cloud Infrastructure:</strong> Leveraging the power of AWS and Google Cloud for peak performance.</li>
+                            <li class="flex items-start"><span class="text-violet-400 mr-3 mt-1">&#10003;</span> <strong>Ironclad Security:</strong> Free SSL, firewalls, and regular security audits to protect your data.</li>
+                            <li class="flex items-start"><span class="text-violet-400 mr-3 mt-1">&#10003;</span> <strong>Blazing-Fast Speeds:</strong> Optimized servers and Content Delivery Networks (CDN) for a superior user experience.</li>
+                            <li class="flex items-start"><span class="text-violet-400 mr-3 mt-1">&#10003;</span> <strong>24/7 Expert Monitoring:</strong> Our team is always watching, ensuring your site is always online and performing optimally.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                 <!-- Service Detail -->
+                <div class="grid md:grid-cols-2 gap-12 items-center fade-in-section">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-4">AI Automation & Data Insights</h2>
+                        <p class="text-gray-300 mb-6">Unlock unprecedented efficiency and intelligence. We implement AI-powered solutions to automate repetitive tasks, provide deep data-driven insights, and create hyper-personalized customer interactions.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><span class="text-pink-400 mr-3 mt-1">&#10003;</span> <strong>Custom AI Chatbot Development:</strong> Engage visitors, answer queries, and capture leads 24/7.</li>
+                            <li class="flex items-start"><span class="text-pink-400 mr-3 mt-1">&#10003;</span> <strong>Intelligent Workflow Automation:</strong> Integrating tools like Zapier and Make to streamline your entire business operation.</li>
+                            <li class="flex items-start"><span class="text-pink-400 mr-3 mt-1">&#10003;</span> <strong>Data Analysis & Predictive Modeling:</strong> Turn your raw data into a strategic asset for forecasting and decision-making.</li>
+                            <li class="flex items-start"><span class="text-pink-400 mr-3 mt-1">&#10003;</span> <strong>AI-Powered Personalization:</strong> Deliver unique, personalized content and product recommendations to every user.</li>
+                        </ul>
+                    </div>
+                     <div class="service-card rounded-xl p-8">
+                        <h3 class="font-bold mb-2 text-lg">Example Use-Case:</h3>
+                        <p class="text-sm text-gray-400 mb-4">An AI chatbot for an e-commerce client handled 80% of customer service queries, reducing support staff workload by 35% and increasing off-hours sales by 15% through guided shopping assistance.</p>
+                        <a href="#contact" class="inline-block mt-6 bg-pink-500 text-white font-bold py-2 px-6 rounded-lg nav-trigger">Automate Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="page-section py-20 bg-black/20">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-16 fade-in-section">
+                    <h1 class="text-4xl md:text-6xl font-black mb-2"><span class="gradient-text">Success Stories</span></h1>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">We don't just talk about results; we deliver them. See the tangible impact we've had on our clients' businesses.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <!-- Portfolio Item 1 -->
+                    <div class="service-card rounded-xl overflow-hidden fade-in-section">
+                        <img src="https://placehold.co/600x400/0a0a1a/33f7ff?text=QuantumLeap+E-commerce" alt="Portfolio Project" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">E-commerce Redesign for QuantumLeap</h3>
+                            <p class="text-gray-400 mb-6">Complete overhaul of UI/UX and backend for a leading online retailer, focusing on mobile conversion and page speed.</p>
+                            <div class="flex flex-wrap gap-4 text-center">
+                                <div class="bg-cyan-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-cyan-400" data-target="200">+0%</div>
+                                    <div class="text-sm text-gray-400">Traffic Growth</div>
+                                </div>
+                                 <div class="bg-cyan-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-cyan-400" data-target="75">+0%</div>
+                                    <div class="text-sm text-gray-400">Conversion Rate</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Portfolio Item 2 -->
+                     <div class="service-card rounded-xl overflow-hidden fade-in-section">
+                        <img src="https://placehold.co/600x400/0a0a1a/7a33ff?text=FutureSys+AI+Support" alt="Portfolio Project" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">AI Chatbot for FutureSys Support</h3>
+                            <p class="text-gray-400 mb-6">Developed a smart chatbot to handle customer support inquiries, integrated with their existing CRM to provide personalized responses.</p>
+                            <div class="flex flex-wrap gap-4 text-center">
+                                <div class="bg-violet-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-violet-400" data-target="40">-0%</div>
+                                    <div class="text-sm text-gray-400">Support Tickets</div>
+                                </div>
+                                 <div class="bg-violet-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-violet-400" data-target="92">+0%</div>
+                                    <div class="text-sm text-gray-400">Customer Satisfaction</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Portfolio Item 3 -->
+                    <div class="service-card rounded-xl overflow-hidden fade-in-section">
+                        <img src="https://placehold.co/600x400/0a0a1a/ff33a1?text=Aura+Fashion+Campaign" alt="Portfolio Project" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Social Media Campaign for Aura Fashion</h3>
+                            <p class="text-gray-400 mb-6">Executed a multi-platform social media strategy focusing on influencer marketing and video content to boost brand awareness.</p>
+                            <div class="flex flex-wrap gap-4 text-center">
+                                <div class="bg-pink-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-pink-400" data-target="500">+0%</div>
+                                    <div class="text-sm text-gray-400">Engagement Rate</div>
+                                </div>
+                                 <div class="bg-pink-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-pink-400" data-target="150000">+0</div>
+                                    <div class="text-sm text-gray-400">Followers Gained</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Portfolio Item 4 -->
+                    <div class="service-card rounded-xl overflow-hidden fade-in-section">
+                        <img src="https://placehold.co/600x400/0a0a1a/e0e0e0?text=Fintech+Data+Dashboard" alt="Portfolio Project" class="w-full h-64 object-cover">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold mb-2">Data Dashboard for Nexus Fintech</h3>
+                            <p class="text-gray-400 mb-6">Built a real-time analytics dashboard to help a fintech startup visualize complex market data and make faster trading decisions.</p>
+                            <div class="flex flex-wrap gap-4 text-center">
+                                <div class="bg-gray-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-gray-400" data-target="90">-0%</div>
+                                    <div class="text-sm text-gray-400">Data Processing Time</div>
+                                </div>
+                                 <div class="bg-gray-500/10 p-3 rounded-lg flex-1">
+                                    <div class="text-3xl font-bold text-gray-400" data-target="30">+0%</div>
+                                    <div class="text-sm text-gray-400">Decision-Making Speed</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Section -->
+        <section id="blog" class="page-section py-20 container mx-auto px-6">
+             <div class="text-center mb-16 fade-in-section">
+                <h1 class="text-4xl md:text-6xl font-black mb-2"><span class="gradient-text">Insights Hub</span></h1>
+                <p class="text-lg text-gray-400 max-w-3xl mx-auto">Stay ahead of the curve with our latest articles, trends, and expert analysis.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post Card 1 -->
+                <div class="service-card rounded-xl overflow-hidden group fade-in-section">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/400x250/0a0a1a/ff33a1?text=AI')"></div>
+                    <div class="p-6">
+                        <p class="text-sm text-pink-400 mb-1">AI & Automation</p>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-pink-400 transition-colors">Boost Your Traffic with AI: A 2025 Guide</h3>
+                        <p class="text-gray-400 text-sm mb-4">Discover how leveraging AI in your content and SEO strategy can lead to explosive organic growth...</p>
+                        <a href="#blog-post-1" class="font-semibold text-cyan-400 nav-trigger">Read More &rarr;</a>
+                    </div>
+                </div>
+                 <!-- Blog Post Card 2 -->
+                <div class="service-card rounded-xl overflow-hidden group fade-in-section">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/400x250/0a0a1a/33f7ff?text=Web+Dev')"></div>
+                    <div class="p-6">
+                        <p class="text-sm text-cyan-400 mb-1">Web Development</p>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">The Future is Headless: Why Decoupled CMS is Winning</h3>
+                        <p class="text-gray-400 text-sm mb-4">Learn about the flexibility, performance, and security benefits of moving to a headless CMS architecture...</p>
+                        <a href="#blog-post-2" class="font-semibold text-cyan-400 nav-trigger">Read More &rarr;</a>
+                    </div>
+                </div>
+                 <!-- Blog Post Card 3 -->
+                <div class="service-card rounded-xl overflow-hidden group fade-in-section">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/400x250/0a0a1a/7a33ff?text=SEO')"></div>
+                    <div class="p-6">
+                        <p class="text-sm text-violet-400 mb-1">SEO & Marketing</p>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-violet-400 transition-colors">Beyond Keywords: The Rise of Semantic SEO</h3>
+                        <p class="text-gray-400 text-sm mb-4">Understand how search engines are evolving and how to adapt your strategy to focus on user intent...</p>
+                        <a href="#blog-post-3" class="font-semibold text-cyan-400 nav-trigger">Read More &rarr;</a>
+                    </div>
+                </div>
+                <!-- Blog Post Card 4 -->
+                <div class="service-card rounded-xl overflow-hidden group fade-in-section">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/400x250/0a0a1a/33f7ff?text=Social+Media')"></div>
+                    <div class="p-6">
+                        <p class="text-sm text-cyan-400 mb-1">Social Media Marketing</p>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">The Art of Storytelling in Social Media</h3>
+                        <p class="text-gray-400 text-sm mb-4">Facts tell, but stories sell. Learn how to craft compelling narratives that build a loyal community around your brand...</p>
+                        <a href="#blog-post-4" class="font-semibold text-cyan-400 nav-trigger">Read More &rarr;</a>
+                    </div>
+                </div>
+                 <!-- Blog Post Card 5 -->
+                <div class="service-card rounded-xl overflow-hidden group fade-in-section">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/400x250/0a0a1a/7a33ff?text=Cybersecurity')"></div>
+                    <div class="p-6">
+                        <p class="text-sm text-violet-400 mb-1">Cybersecurity</p>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-violet-400 transition-colors">Cybersecurity Essentials for Small Businesses</h3>
+                        <p class="text-gray-400 text-sm mb-4">In 2025, a data breach can be fatal for SMBs. Here are the essential steps to protect your business and your customers...</p>
+                        <a href="#blog-post-5" class="font-semibold text-cyan-400 nav-trigger">Read More &rarr;</a>
+                    </div>
+                </div>
+                 <!-- Blog Post Card 6 -->
+                <div class="service-card rounded-xl overflow-hidden group fade-in-section">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/400x250/0a0a1a/ff33a1?text=Branding')"></div>
+                    <div class="p-6">
+                        <p class="text-sm text-pink-400 mb-1">Branding & Strategy</p>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-pink-400 transition-colors">Beyond the Logo: Building a Brand That Resonates</h3>
+                        <p class="text-gray-400 text-sm mb-4">Your brand is more than a logo; it's a feeling. Discover how to build a powerful brand identity that connects with audiences...</p>
+                        <a href="#blog-post-6" class="font-semibold text-cyan-400 nav-trigger">Read More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="page-section py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h1 class="text-4xl md:text-6xl font-black mb-2"><span class="gradient-text">Let's Build Together</span></h1>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Ready to start your project? Book a free consultation and let's discuss how we can help you achieve your goals.</p>
+                </div>
+                <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 service-card p-8 md:p-12 rounded-2xl fade-in-section">
+                    <!-- Form -->
+                    <div>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-300">Full Name</label>
+                                <input type="text" id="name" name="name" class="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block mb-2 text-sm font-medium text-gray-300">Email</label>
+                                <input type="email" id="email" name="email" class="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="service" class="block mb-2 text-sm font-medium text-gray-300">Service of Interest</label>
+                                <select id="service" name="service" class="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
+                                    <option>Web Development</option>
+                                    <option>AI Automation</option>
+                                    <option>SEO & Marketing</option>
+                                    <option>Social Media</option>
+                                    <option>Hosting</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                             <div class="mb-6">
+                                <label for="message" class="block mb-2 text-sm font-medium text-gray-300">Message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full bg-gray-800/50 border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:border-cyan-400" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-bold py-3 px-6 rounded-lg hover:opacity-90 transition-opacity glow-effect">
+                                Book a Free Consultation
+                            </button>
+                            <p id="form-success-message" class="text-green-400 mt-4 text-center hidden">Thank you! We've received your message and will be in touch shortly.</p>
+                        </form>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="flex flex-col justify-center">
+                        <h3 class="text-2xl font-bold mb-4">Direct Contact</h3>
+                        <p class="text-gray-400 mb-6">Prefer to reach out directly? We're here to help.</p>
+                        <div class="space-y-4">
+                            <a href="mailto:alihusnain0204@gmail.com" class="flex items-center group">
+                                <span class="mr-3 p-2 bg-gray-700 rounded-full group-hover:bg-cyan-500 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                                </span>
+                                <span>alihusnain0204@gmail.com</span>
+                            </a>
+                            <a href="https://wa.me/923557181347" target="_blank" class="flex items-center group">
+                                <span class="mr-3 p-2 bg-gray-700 rounded-full group-hover:bg-green-500 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="text-white"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.267.655 4.398 1.908 6.161l.217.324-1.251 4.565 4.654-1.225.308.185z"/></svg>
+                                </span>
+                                <span>+923557181347</span>
+                            </a>
+                             <a href="https://www.linkedin.com/public-profile/settings?trk=d_flagship3_profile_self_view_public_profile" target="_blank" class="flex items-center group">
+                                <span class="mr-3 p-2 bg-gray-700 rounded-full group-hover:bg-blue-500 transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                </span>
+                                <span>Connect on LinkedIn</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Blog Post Sections -->
+        <section id="blog-post-1" class="page-section py-20 container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <a href="#blog" class="nav-trigger text-cyan-400 mb-8 inline-block">&larr; Back to Blog</a>
+                <h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">Boost Your Traffic with AI: A 2025 Guide</span></h1>
+                <p class="text-gray-400 mb-8">Published on <span class="font-semibold">July 1, 2025</span> by Botlytics Insights</p>
+                <img src="https://placehold.co/800x400/0a0a1a/ff33a1?text=AI+and+Growth" alt="AI Blog Post" class="rounded-xl mb-8 w-full">
+                <div class="blog-content">
+                    <p>The digital marketing landscape is in a perpetual state of evolution, and at the forefront of this change is Artificial Intelligence. If you're still relying solely on manual keyword research and traditional content strategies, you're not just falling behind; you're becoming invisible. In 2025, leveraging AI isn't just an option—it's the cornerstone of any successful SEO and traffic generation strategy.</p>
+                    
+                    <h2>AI-Powered Content Creation: Beyond Just Writing</h2>
+                    <p>The most immediate application of AI is in content generation. Tools like GPT-4 and beyond can draft articles, social media posts, and product descriptions in seconds. However, the real value lies not in replacing human writers, but in augmenting them.</p>
+                    <h3>How to use AI for content effectively:</h3>
+                    <ul>
+                        <li><strong>Topic Ideation:</strong> Use AI to analyze competitor content and identify high-potential topic clusters that your audience is searching for.</li>
+                        <li><strong>Content Optimization:</strong> Tools like SurferSEO or MarketMuse use AI to analyze top-ranking pages and provide data-driven recommendations to improve your content's relevance and depth.</li>
+                        <li><strong>Personalization at Scale:</strong> AI can dynamically alter website content based on a user's browsing history, location, or demographics, creating a hyper-personalized experience that boosts engagement and conversions.</li>
+                    </ul>
+
+                    <h2>Predictive SEO: Winning Before the Game Starts</h2>
+                    <p>Why react to algorithm changes when you can anticipate them? Predictive SEO uses machine learning models to analyze vast datasets—search trends, competitor behavior, SERP history—to forecast which keywords will trend and what content formats will perform best in the future.</p>
+                    <p>By using predictive analytics, you can create content that meets demand as it arises, not months after. This proactive approach allows you to capture traffic and establish authority in emerging niches before your competitors even know they exist.</p>
+
+                    <h2>The Bottom Line</h2>
+                    <p>Integrating AI into your marketing strategy is no longer a futuristic concept; it's a present-day necessity. From creating smarter, more relevant content to predicting the next big search trend, AI provides an unparalleled competitive advantage. By embracing these tools, you can not only increase your traffic but also build a more efficient, data-driven, and successful digital presence.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="blog-post-2" class="page-section py-20 container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <a href="#blog" class="nav-trigger text-cyan-400 mb-8 inline-block">&larr; Back to Blog</a>
+                <h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">The Future is Headless: Why Decoupled CMS is Winning</span></h1>
+                 <p class="text-gray-400 mb-8">Published on <span class="font-semibold">June 15, 2025</span> by Botlytics Insights</p>
+                 <img src="https://placehold.co/800x400/0a0a1a/33f7ff?text=Headless+Architecture" alt="Headless CMS Blog Post" class="rounded-xl mb-8 w-full">
+                <div class="blog-content">
+                    <p>For years, traditional monolithic Content Management Systems (CMS) like WordPress have dominated the web. They bundle the backend (content management) and the frontend (the visual presentation) into a single package. While convenient, this architecture is becoming increasingly restrictive in a world of diverse digital experiences. Enter the Headless CMS.</p>
+                    
+                    <h2>What is a Headless CMS?</h2>
+                    <p>A headless CMS, or a "decoupled" CMS, is a content management system that separates the content repository (the "body") from the presentation layer (the "head"). In simple terms, it manages your content but doesn't care how or where it's displayed. It delivers your content via an API to any device or platform you can imagine.</p>
+                    
+                     <h3>The Core Advantages:</h3>
+                    <ul>
+                        <li><strong>Ultimate Flexibility:</strong> Your content is no longer trapped in a website template. Push the same content to a website (built with React or Vue), a mobile app, a smart watch, a digital kiosk, or even an AI voice assistant.</li>
+                        <li><strong>Superior Performance:</strong> Frontends built with modern JavaScript frameworks (the "Jamstack" architecture) are incredibly fast. They are pre-built and served from a CDN, leading to near-instant load times, which is a massive boost for both user experience and SEO.</li>
+                        <li><strong>Enhanced Security:</strong> By decoupling the content management from the public-facing frontend, you significantly reduce the attack surface. There's no database or complex backend for hackers to target on the frontend server.</li>
+                         <li><strong>Developer Freedom:</strong> Your developers are no longer constrained by the limitations of a specific CMS theme or plugin ecosystem. They can use the best tools for the job—React, Svelte, Angular—to build the best possible user experience.</li>
+                    </ul>
+
+                    <h2>Is a Headless CMS Right for You?</h2>
+                    <p>If your business needs to deliver content to multiple platforms, prioritizes performance and security, and wants to build a future-proof digital presence, then a headless CMS is the answer. While traditional systems still have their place, the decoupled approach offers the flexibility and power needed to win in the modern digital landscape.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-post-3" class="page-section py-20 container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <a href="#blog" class="nav-trigger text-cyan-400 mb-8 inline-block">&larr; Back to Blog</a>
+                <h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">Beyond Keywords: The Rise of Semantic SEO</span></h1>
+                <p class="text-gray-400 mb-8">Published on <span class="font-semibold">June 1, 2025</span> by Botlytics Insights</p>
+                <img src="https://placehold.co/800x400/0a0a1a/7a33ff?text=Semantic+Search" alt="Semantic SEO Blog Post" class="rounded-xl mb-8 w-full">
+                <div class="blog-content">
+                    <p>The days of "keyword stuffing" are long gone. Modern search engines like Google have evolved far beyond simply matching keywords in a query to keywords on a page. They now strive to understand the *intent* and *context* behind a search. This is the world of Semantic SEO.</p>
+                    
+                    <h2>What is Semantic SEO?</h2>
+                    <p>Semantic SEO is the process of optimizing your content around topics, not just individual keywords. It's about creating comprehensive content that thoroughly answers a user's query and related follow-up questions. It focuses on building topical authority and demonstrating true expertise to search engines.</p>
+                    
+                    <h3>Key Principles of a Semantic Strategy:</h3>
+                    <ul>
+                        <li><strong>Focus on Topic Clusters:</strong> Instead of writing one-off articles, build a "pillar" page for a broad topic and surround it with "cluster" pages that cover specific sub-topics in detail. This structure signals to Google that you are an authority on the subject.</li>
+                        <li><strong>Answer Questions Directly:</strong> Use structured data (like Schema markup for FAQs) and clear headings to answer the "who, what, when, where, why" of a topic. This increases your chances of appearing in "Featured Snippets" and "People Also Ask" boxes.</li>
+                        <li><strong>Use LSI Keywords (and Synonyms):</strong> Latent Semantic Indexing (LSI) keywords are words and phrases that are contextually related to your main topic. Including them (e.g., for "car," using terms like "engine," "tires," "driving," "vehicle") helps search engines better understand the context of your content.</li>
+                        <li><strong>Optimize for User Intent:</strong> Is the user looking to buy (transactional intent), learn (informational intent), or find a specific website (navigational intent)? Tailor your content to match that intent. A blog post won't rank for a query where users clearly want to purchase a product.</li>
+                    </ul>
+
+                    <h2>Why It Matters Now More Than Ever</h2>
+                    <p>With the rise of voice search and conversational AI, users are asking more complex, natural-language questions. A semantic SEO strategy ensures your content is positioned to answer these queries, making you the go-to resource in your niche. By moving beyond keywords and embracing topics, you build a more resilient, authoritative, and ultimately more successful SEO foundation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-post-4" class="page-section py-20 container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <a href="#blog" class="nav-trigger text-cyan-400 mb-8 inline-block">&larr; Back to Blog</a>
+                <h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">The Art of Storytelling in Social Media</span></h1>
+                <p class="text-gray-400 mb-8">Published on <span class="font-semibold">July 10, 2025</span> by Botlytics Insights</p>
+                <img src="https://placehold.co/800x400/0a0a1a/33f7ff?text=Storytelling" alt="Social Media Storytelling" class="rounded-xl mb-8 w-full">
+                <div class="blog-content">
+                    <p>In a world saturated with digital noise, how does a brand capture attention? The answer isn't louder ads or more frequent posts. It's better stories. Social media has evolved from a simple broadcast platform into a dynamic stage for brand narratives. The brands that win are the ones that master the art of storytelling.</p>
+                    <h2>Why Storytelling Works</h2>
+                    <p>Humans are hardwired for stories. A good narrative triggers an emotional response, making a message more memorable and relatable than a list of facts and figures. When a brand tells a story, it stops being a faceless corporation and becomes a character its audience can connect with.</p>
+                    <h3>Elements of a Great Brand Story:</h3>
+                    <ul>
+                        <li><strong>The Hero:</strong> Your customer should always be the hero of the story. Your brand is the guide or the tool that helps them overcome a challenge.</li>
+                        <li><strong>The Conflict:</strong> What problem does your hero face? A great story is built on tension. Clearly define the pain point your product or service solves.</li>
+                        <li><strong>The Resolution:</strong> Show, don't just tell, how you help the hero succeed. Use testimonials, case studies, and user-generated content to provide a satisfying conclusion.</li>
+                        <li><strong>Authenticity:</strong> Today's consumers can spot inauthenticity from a mile away. Be genuine, transparent, and true to your brand's values. Share the behind-the-scenes, the struggles, and the triumphs.</li>
+                    </ul>
+                    <h2>Putting It Into Practice</h2>
+                    <p>Use Instagram Stories for daily, unpolished glimpses into your company culture. Create short, impactful video testimonials for TikTok and Reels. Write long-form posts on LinkedIn detailing a client's journey to success. Every platform offers a unique way to tell your story. The key is to be consistent, authentic, and always focused on your hero: the customer.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="blog-post-5" class="page-section py-20 container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <a href="#blog" class="nav-trigger text-cyan-400 mb-8 inline-block">&larr; Back to Blog</a>
+                <h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">Cybersecurity Essentials for Small Businesses</span></h1>
+                <p class="text-gray-400 mb-8">Published on <span class="font-semibold">July 20, 2025</span> by Botlytics Insights</p>
+                 <img src="https://placehold.co/800x400/0a0a1a/7a33ff?text=Cyber+Lock" alt="Cybersecurity Blog Post" class="rounded-xl mb-8 w-full">
+                <div class="blog-content">
+                    <p>Many small business owners believe they are too small to be targeted by cybercriminals. This is a dangerous misconception. In reality, SMBs are often seen as easy targets due to their limited security resources. In 2025, a single data breach can not only lead to devastating financial loss but can also destroy the trust you've worked so hard to build with your customers. Protecting your business is not optional.</p>
+                    <h2>Foundational Security Measures</h2>
+                    <p>You don't need a massive budget to significantly improve your security posture. Start with these non-negotiable essentials:</p>
+                    <h3>Key Steps to Take Today:</h3>
+                    <ul>
+                        <li><strong>Strong, Unique Passwords & MFA:</strong> Enforce a strict password policy for all accounts. More importantly, enable Multi-Factor Authentication (MFA) wherever possible. MFA is one of the most effective single measures you can take to prevent unauthorized access.</li>
+                        <li><strong>Regular Software Updates:</strong> Cybercriminals exploit known vulnerabilities in outdated software. Ensure your operating systems, browsers, CMS, and all other applications are kept up-to-date with the latest security patches.</li>
+                        <li><strong>Employee Training:</strong> Your employees are your first line of defense. Train them to recognize phishing emails, avoid suspicious links, and understand the importance of data security protocols. A well-informed team is a vigilant team.</li>
+                        <li><strong>Data Backups:</strong> In the event of a ransomware attack, having recent, isolated backups of your critical data can be the difference between a minor inconvenience and a business-ending disaster. Follow the 3-2-1 rule: three copies of your data, on two different media, with one copy off-site.</li>
+                    </ul>
+                    <h2>Beyond the Basics</h2>
+                    <p>Once the foundations are in place, consider implementing a firewall, using a reputable antivirus solution on all devices, and encrypting sensitive data both at rest and in transit. Cybersecurity is an ongoing process, not a one-time fix. By taking these essential steps, you can build a strong defense that protects your business, your data, and your customers.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-post-6" class="page-section py-20 container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <a href="#blog" class="nav-trigger text-cyan-400 mb-8 inline-block">&larr; Back to Blog</a>
+                <h1 class="text-4xl md:text-6xl font-black mb-4"><span class="gradient-text">Beyond the Logo: Building a Brand That Resonates</span></h1>
+                <p class="text-gray-400 mb-8">Published on <span class="font-semibold">August 1, 2025</span> by Botlytics Insights</p>
+                <img src="https://placehold.co/800x400/0a0a1a/ff33a1?text=Brand+Identity" alt="Branding Blog Post" class="rounded-xl mb-8 w-full">
+                <div class="blog-content">
+                    <p>What is a brand? Many entrepreneurs mistakenly believe it's just their company's name and logo. In reality, that's just the tip of the iceberg. A brand is the sum total of every interaction a person has with your company. It's the gut feeling, the emotional connection, and the reputation you hold in the minds of your customers. A strong brand is your most valuable asset.</p>
+                    <h2>The Pillars of a Powerful Brand</h2>
+                    <p>Building a brand that resonates requires a strategic and holistic approach. It's about defining who you are and communicating that identity consistently across all channels.</p>
+                    <h3>The Must-Have Components:</h3>
+                    <ul>
+                        <li><strong>Brand Purpose (The "Why"):</strong> Why does your company exist, beyond making money? What is your mission? A clear purpose is the foundation of an authentic brand and attracts both customers and employees who share your values.</li>
+                        <li><strong>Brand Voice & Tone:</strong> How does your brand sound? Is it professional and authoritative, or playful and casual? Defining your voice ensures a consistent personality in your website copy, social media posts, and customer service interactions.</li>
+                        <li><strong>Visual Identity:</strong> This is where the logo, color palette, and typography come in. A cohesive visual identity makes your brand instantly recognizable and memorable. It should be a visual representation of your brand's personality and purpose.</li>
+                        <li><strong>Customer Experience:</strong> Every touchpoint matters—from the user-friendliness of your website to the speed of your customer support. A positive and consistent customer experience is crucial for building brand loyalty and trust.</li>
+                    </ul>
+                    <h2>Living Your Brand</h2>
+                    <p>A brand isn't something you create once and forget about. It must be lived and breathed by everyone in your organization. When your purpose, voice, visuals, and experience are all aligned, you create something powerful: a brand that people don't just buy from, but believe in.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-black/50 border-t border-violet-500/10 mt-10">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold gradient-text">Botlytics</h3>
+                    <p class="text-gray-400 mt-2">Empowering Businesses with Digital Intelligence.</p>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-lg mb-3">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#about" class="hover:text-cyan-400 nav-trigger">About Us</a></li>
+                        <li><a href="#services" class="hover:text-cyan-400 nav-trigger">Services</a></li>
+                        <li><a href="#blog" class="hover:text-cyan-400 nav-trigger">Blog</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold text-lg mb-3">Newsletter</h4>
+                    <p class="text-gray-400 mb-3">Get our free guide: "Boost Your Traffic with AI in 2025"</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="flex-grow bg-gray-800/50 border border-gray-600 rounded-l-lg px-3 py-2 focus:outline-none focus:border-cyan-400">
+                        <button class="bg-gradient-to-r from-cyan-500 to-violet-500 text-white font-bold py-2 px-4 rounded-r-lg hover:opacity-90 transition-opacity">&rarr;</button>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                &copy; 2025 Botlytics. All Rights Reserved. | <a href="#" class="hover:text-white">Dashboard Login</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot-container" class="fixed bottom-5 right-5 z-50">
+        <button id="chatbot-toggle" class="bg-gradient-to-r from-cyan-500 to-violet-500 text-white rounded-full p-4 shadow-lg glow-effect-subtle hover:scale-110 transition-transform">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect x="4" y="12" width="8" height="8" rx="2"/><path d="M8 12v-2a2 2 0 1 1 4 0v2"/></svg>
+        </button>
+        <div id="chatbot-window" class="hidden absolute bottom-20 right-0 w-80 chatbot-window bg-gray-900/80 backdrop-blur-xl border border-violet-500/30 rounded-2xl shadow-2xl flex flex-col">
+            <div class="p-4 border-b border-gray-700">
+                <h3 class="font-bold text-white">Botlytics Assistant</h3>
+                <p class="text-xs text-gray-400">How can I help you today?</p>
+            </div>
+            <div id="chat-messages" class="flex-1 p-4 space-y-4 overflow-y-auto">
+                 <div class="flex">
+                    <div class="bg-violet-500 text-white p-3 rounded-lg max-w-xs">
+                        Hello! Ask me about our services, pricing, or anything else.
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-700">
+                <div class="flex">
+                    <input type="text" id="chat-input" placeholder="Type your message..." class="flex-1 bg-gray-800 border border-gray-600 rounded-l-lg px-3 py-2 focus:outline-none focus:border-cyan-400 text-sm">
+                    <button id="chat-send" class="bg-cyan-500 text-white font-bold px-4 rounded-r-lg">&rarr;</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Single-Page Navigation ---
+            const navTriggers = document.querySelectorAll('.nav-trigger');
+            const pageSections = document.querySelectorAll('.page-section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function navigateTo(hash) {
+                // Hide all sections
+                pageSections.forEach(section => section.classList.remove('active'));
+                
+                // Show the target section
+                const targetSection = document.querySelector(hash);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                    // Trigger animations for the new active section
+                    observeSections(targetSection);
+                }
+
+                // Update active nav link
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === hash || (hash.startsWith('#blog-post') && link.getAttribute('href') === '#blog')) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                window.scrollTo(0, 0);
+            }
+
+            navTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const hash = this.getAttribute('href');
+                    navigateTo(hash);
+                    
+                    // Close mobile menu on navigation
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                         mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // --- Number Counter Animation ---
+            function animateCounters(container) {
+                 const counters = container.querySelectorAll('[data-target]');
+                 counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const sign = counter.innerText.includes('+') ? '+' : (counter.innerText.includes('-') ? '-' : '');
+                    const suffix = counter.innerText.includes('%') ? '%' : '';
+                    
+                    counter.innerText = '0';
+                    let current = 0;
+                    
+                    const updateCounter = () => {
+                        const increment = target / 100;
+                        current += increment;
+
+                        if (current < target) {
+                            counter.innerText = `${sign}${Math.ceil(current)}${suffix}`;
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.innerText = `${sign}${target}${suffix}`;
+                        }
+                    };
+                    updateCounter();
+                });
+            }
+
+            // --- Mobile Menu ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Section Fade-in on Scroll ---
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        if (entry.target.querySelector('[data-target]')) {
+                            animateCounters(entry.target);
+                        }
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            function observeSections(container) {
+                 container.querySelectorAll('.fade-in-section').forEach(section => {
+                    // Reset visibility for re-observation if needed
+                    section.classList.remove('is-visible');
+                    observer.observe(section);
+                });
+            }
+            
+            // Initial observation
+            observeSections(document.getElementById('home'));
+
+            // --- Testimonial Slider ---
+            const testimonials = document.querySelectorAll('.testimonial-slide');
+            const prevButton = document.getElementById('prev-testimonial');
+            const nextButton = document.getElementById('next-testimonial');
+            let currentTestimonial = 0;
+
+            function showTestimonial(index) {
+                testimonials.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+
+            prevButton.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+
+            nextButton.addEventListener('click', () => {
+                currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+                showTestimonial(currentTestimonial);
+            });
+
+            setInterval(() => {
+                nextButton.click();
+            }, 7000); // Auto-slide every 7 seconds
+
+
+            // --- Contact Form ---
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('form-success-message');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                contactForm.reset();
+                successMessage.classList.remove('hidden');
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+            });
+
+            // --- Chatbot ---
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotWindow = document.getElementById('chatbot-window');
+            const chatMessages = document.getElementById('chat-messages');
+            const chatInput = document.getElementById('chat-input');
+            const chatSend = document.getElementById('chat-send');
+
+            chatbotToggle.addEventListener('click', () => {
+                chatbotWindow.classList.toggle('hidden');
+            });
+
+            const botResponses = {
+                "services": "We offer Web Development, Hosting, SEO, Digital Marketing, Social Media Management, and AI Automation. Which one interests you?",
+                "pricing": "Our pricing is project-based. The best way to get an accurate quote is to book a free consultation through our contact form!",
+                "hello": "Hello there! How can I assist you today?",
+                "default": "I'm still learning! For more complex questions, please fill out our contact form. A human will get back to you shortly."
+            };
+
+            function addMessage(message, sender = 'user') {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('flex');
+
+                const messageContent = document.createElement('div');
+                messageContent.textContent = message;
+                messageContent.classList.add('p-3', 'rounded-lg', 'max-w-xs');
+
+                if (sender === 'user') {
+                    messageDiv.classList.add('justify-end');
+                    messageContent.classList.add('bg-cyan-500', 'text-white');
+                } else {
+                    messageContent.classList.add('bg-violet-500', 'text-white');
+                }
+                
+                messageDiv.appendChild(messageContent);
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function handleChat() {
+                const userMessage = chatInput.value.trim();
+                if (!userMessage) return;
+
+                addMessage(userMessage, 'user');
+                chatInput.value = '';
+
+                setTimeout(() => {
+                    const lowerCaseMessage = userMessage.toLowerCase();
+                    let botReply = botResponses.default;
+
+                    if (lowerCaseMessage.includes('service')) {
+                        botReply = botResponses.services;
+                    } else if (lowerCaseMessage.includes('price') || lowerCaseMessage.includes('cost')) {
+                        botReply = botResponses.pricing;
+                    } else if (lowerCaseMessage.includes('hello') || lowerCaseMessage.includes('hi')) {
+                        botReply = botResponses.hello;
+                    }
+                    
+                    addMessage(botReply, 'bot');
+                }, 1000);
+            }
+            
+            chatSend.addEventListener('click', handleChat);
+            chatInput.addEventListener('keypress', (e) => {
+                if(e.key === 'Enter') {
+                    handleChat();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
+
+
